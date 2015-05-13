@@ -1,0 +1,14 @@
+web:
+  build: .
+  command: python app.py
+  ports:
+    - "5000:5000"
+  links:
+    - redis
+  environment:
+    - PYTHONUNBUFFERED=1
+    - REDIS_HOST=redis
+  volumes:
+    - .:/code
+redis:
+  image: redis:latest
